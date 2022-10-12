@@ -1,19 +1,17 @@
 from random import randint
 
-size = 5  # number of rows & columns in the grid
-turns = 10  # number of guesses allowed in the game
+size = 5
+turns = 10
 board = []
 
 for row in range(size):
-   board.append(["O"] * size)  # isn't this cool?!?!
-
+   board.append(["O"] * size) =
 def print_board(board):
    for row in board:
       print(" ".join(row))
 
 ship_row = randint(0, len(board) - 1)
 ship_col = randint(0, len(board[0]) - 1)
-print("DEBUG: Row=", ship_row, "Col=", ship_col)  # FOR TESTING PURPOSES ONLY
 
 for turn in range(turns):
    print("Turn", turn + 1)
@@ -27,7 +25,7 @@ for turn in range(turns):
       print("That's not even in this ocean.")
    elif board[guess_row][guess_col] == "X":
       print("You already guessed that one.")
-   elif guess_row = ship_row - 1 or guess_col = ship_col - 1:
+   elif guess_row == ship_row - 1 or guess_col == ship_col - 1:
       print("You are close!")
    elif guess_row == board[ship_row]:
       print("You are on the correct row..")
@@ -37,6 +35,6 @@ for turn in range(turns):
       print("You missed my battleship!")
       board[guess_row][guess_col] = "X"
 else:
-   print("Sorry -- You Lose...")
+   print("You lose.")
    board[ship_row][ship_col] = "S"
    print_board(board)
